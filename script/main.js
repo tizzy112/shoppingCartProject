@@ -43,38 +43,40 @@ function deleteProduct(event){
     const index = shoppingCart.indexOf(product);
     shoppingCart.splice(index, 1);
     shoppingContainer.innerHTML = "";
-    displayShoppingCart()
+    displayShoppingCart();
 }
 function handleIncrement(event){
     let id = event.target.id
     id = parseInt(id)
     const product = shoppingCart.find((product) => product.id === id);
-    let quantityTag = document.getElementById(product.name)
-    product.quantity = product.quantity + 1
-    quantityTag.innerHTML = product.quantity
-    totality(event) 
+    let quantityTag = document.getElementById(product.name);
+    product.quantity = product.quantity + 1;
+    quantityTag.innerHTML = product.quantity;
+    totality() 
 }
 
 function handleDecrement(event) {
     let id = event.target.id
     id = parseInt(id)
-    const product = shoppingCart.find((product) => product.id === id)
-    let quantityMag = document.getElementById(product.name)
+    const product = shoppingCart.find((product) => product.id === id);
+    let quantityTag = document.getElementById(product.name);
     product.quantity = (product.quantity > 1)? product.quantity -1: product.quantity;
-    quantityMag.innerHTML = product.quantity
-    totality(event)
+    quantityTag.innerHTML = product.quantity
+    totality()
 }
 
-function totality(event) {
-    let id = event.target.id
-    id = parseInt(id)
-    const product = shoppingCart.find((product) => product.id === id)
-    let quantityTot = document.getElementById('totalPrice');
-     let singlequantity = (product.quantity * product.price)
+function totality() {
+    let totalTag = document.getElementById("totalPrice");
+    let totalPrice = 0;
+    // loop through product obj and get quantity / price 
+    shoppingCart.forEach((product)=>{
+      const price = product.price;
+      const quantity = product.quantity;
+      const productPrice = price * quantity;
+      totalPrice += productPrice
+    });
+    totalTag.innerHTML = `N${totalPrice}`
 
-// quantityTot = quantityTot + (product.quantity * product.price)
-// quantityTot.innerHTML = quantityTot
-   console.log(singlequantity)
 }
 
 
@@ -176,7 +178,7 @@ decrement.addEventListener("click",function(e){
 
  //add productContainer to shopping container
  shoppingContainer.appendChild(productContainer);
-
+  totality()
 }
 }
-displayShoppingCart()
+displayShoppingCart();

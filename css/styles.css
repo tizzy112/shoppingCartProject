@@ -1,0 +1,50 @@
+main{
+    padding: 25px 25px 25px 25px;
+
+}
+.card-body{
+    display: flex;    
+}
+.rolex{
+    padding-left: 50px;
+}
+.card{
+    display: flex;
+    margin-left: 150px;
+    height:100%;
+    margin-top: 18%;
+    background-color: lightgrey;
+}
+.shortinput{
+    display: flex;
+    margin-top: 25px;
+    justify-content: space-between;
+}
+.Checkoutform{
+    margin-top: 20px;
+}
+.headh3{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.submitbtn{
+    margin-left: 80%;
+    margin-top: 50px;
+}
+.orderbtn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+}
+.bTn{
+    background-color: gainsboro;
+    border: none;
+    border-radius: 6px;
+    height: 24px;
+    width: 24px;
+    color: fff;
+}
+.orderbtn p{
+    padding-top: 10px;
+}

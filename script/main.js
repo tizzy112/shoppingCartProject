@@ -37,7 +37,7 @@ const shoppingContainer = document.getElementById("checkoutCon");
 
 function deleteProduct(event){
     let id = event.target.id
-    id = paraseInt(id)
+    id = parseInt(id)
 
     const product = shoppingCart.find((product) => product.id === id);
     const index = shoppingCart.indexOf(product);
@@ -47,7 +47,7 @@ function deleteProduct(event){
 }
 function handleIncrement(event){
     let id = event.target.id
-    id = paraseInt(id)
+    id = parseInt(id)
     const product = shoppingCart.find((product) => product.id === id);
     let quantityTag = document.getElementById(product.name)
     product.quantity = product.quantity + 1
@@ -70,7 +70,7 @@ function totality(event) {
     id = parseInt(id)
     const product = shoppingCart.find((product) => product.id === id)
     let quantityTot = document.getElementById('totalPrice');
-    let singlequantity = (product.quantity * product.price)
+     let singlequantity = (product.quantity * product.price)
 
 // quantityTot = quantityTot + (product.quantity * product.price)
 // quantityTot.innerHTML = quantityTot
@@ -139,14 +139,19 @@ for (product of shoppingCart) {
   // create the increment and decrement button
   const increment = document.createElement("button")
   increment.innerHTML = "+";
+  increment.setAttribute('id',product.id)
+  increment.addEventListener('click', (event) => handleIncrement(event))
 
   const decrement = document.createElement("button")
   decrement.innerHTML = "-";
+  decrement.setAttribute('id', product.id)
+  decrement.addEventListener('click', (event) => handleDecrement(event))
 
   //create quantity display
   const quantity = document.createElement("p")
   quantity.innerHTML = product.quantity;
-  increment.addEventListener("click", function(e){
+  quantity.setAttribute('id', product.name)
+ /* increment.addEventListener("click", function(e){
        if (product.quantity <3) {
         product.quantity += 1
     quantity.innerHTML = product.quantity
@@ -159,7 +164,7 @@ decrement.addEventListener("click",function(e){
         quantity.innerHTML = product.quantity
         productPrice.innerHTML = `price: ${product.price * product.quantity}`;
     }
-})
+}) */
 
   //add increment , decrement and quantity to btn container
   btnContainer.appendChild(increment)
